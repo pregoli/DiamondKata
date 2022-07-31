@@ -2,6 +2,9 @@
   "profiles": {
     "Diamond.Application": {
       "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
     }
   }
 }
