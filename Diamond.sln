@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diamond.Application", "App\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diamond.Application.UnitTests", "Tests\Diamond.Application.UnitTests\Diamond.Application.UnitTests.csproj", "{0117FDAE-154F-47E7-A890-F48A2090D103}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{A9A25FB3-ADE4-4A35-BBC7-22B0A638BB9B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8F157CCB-1390-47CD-9BF1-339DF2240B68}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
