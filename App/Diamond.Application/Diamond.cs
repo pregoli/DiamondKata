@@ -4,6 +4,9 @@ namespace Diamond.Application;
 
 public class Diamond
 {
+    public static readonly char[] AlphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+    private static readonly char FirstAlphabetLetter = AlphabetLetters.First();
+
     private readonly int inputIndex;
     private readonly StringBuilder diamondBuilder;
 
@@ -14,13 +17,7 @@ public class Diamond
         PrintLine(inputIndex, FirstAlphabetLetter);
     }
 
-    private static readonly char[] AlphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-    private static readonly char FirstAlphabetLetter = AlphabetLetters.First();
-    private const char PaddingUnitSpace = ' ';
-    
-    internal static char Input { get; private set; }
-    internal static bool InputIsEqualToFirstChar => Input == FirstAlphabetLetter;
-    
+    internal bool InputIsEqualToFirstAlphabetLetter => inputIndex is 0;
     public string Output => diamondBuilder.ToString();
 
     public static Diamond InitializeWithInput(char input)
@@ -28,10 +25,10 @@ public class Diamond
         return new Diamond(input);
     }
 
-    public string Build()
+    public Diamond Build()
     {
-        if (InputIsEqualToFirstChar)
-            return Output;
+        if (InputIsEqualToFirstAlphabetLetter)
+            return this;
 
         for (int nextCharIndex = 1; nextCharIndex <= inputIndex; nextCharIndex++)
             PrintLine(inputIndex - nextCharIndex, AlphabetLetters[nextCharIndex], nextCharIndex + (nextCharIndex - 1));
@@ -39,11 +36,13 @@ public class Diamond
         for (int nextCharIndex = inputIndex - 1; nextCharIndex >= 0; nextCharIndex--)
             PrintLine(inputIndex - nextCharIndex, AlphabetLetters[nextCharIndex], nextCharIndex + (nextCharIndex - 1));
 
-        return Output;
+        return this;
     }
 
     private void PrintLine(int paddingLeft, char @char, int paddingRight = 0)
     {
+        const char PaddingUnitSpace = ' ';
+
         diamondBuilder.Append($"{string.Empty.PadLeft(paddingLeft, PaddingUnitSpace)}{@char}");
 
         if (@char != FirstAlphabetLetter)
