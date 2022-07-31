@@ -4,22 +4,22 @@ namespace Diamond.Application;
 
 public class Diamond
 {
+    private readonly int inputIndex;
+    private readonly StringBuilder diamondBuilder;
+
     private Diamond(char input)
     {
-        InputIndex = Array.FindIndex(chars, letter => letter == char.ToUpper(input));
-        PrintLine(InputIndex, firstChar);
+        diamondBuilder = new StringBuilder();
+        inputIndex = Array.FindIndex(AlphabetLetters, letter => letter == char.ToUpper(input));
+        PrintLine(inputIndex, FirstAlphabetLetter);
     }
 
-    private static readonly char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-    private static readonly char firstChar = chars.First();
+    private static readonly char[] AlphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+    private static readonly char FirstAlphabetLetter = AlphabetLetters.First();
     private const char PaddingUnitSpace = ' ';
     
-    private readonly StringBuilder diamondBuilder = new();
-    
     internal static char Input { get; private set; }
-    internal int InputIndex { get; private set; } = Array.FindIndex(chars, letter => letter == char.ToUpper(Input));
-    internal static bool InputIsEqualToFirstChar => Input == firstChar;
-    internal int ReverseInputIndex => InputIndex - 1;
+    internal static bool InputIsEqualToFirstChar => Input == FirstAlphabetLetter;
     
     public string Output => diamondBuilder.ToString();
 
@@ -33,11 +33,11 @@ public class Diamond
         if (InputIsEqualToFirstChar)
             return Output;
 
-        for (int nextCharIndex = 1; nextCharIndex <= InputIndex; nextCharIndex++)
-            PrintLine(InputIndex - nextCharIndex, chars[nextCharIndex], nextCharIndex + (nextCharIndex - 1));
+        for (int nextCharIndex = 1; nextCharIndex <= inputIndex; nextCharIndex++)
+            PrintLine(inputIndex - nextCharIndex, AlphabetLetters[nextCharIndex], nextCharIndex + (nextCharIndex - 1));
 
-        for (int nextCharIndex = ReverseInputIndex; nextCharIndex >= 0; nextCharIndex--)
-            PrintLine(InputIndex - nextCharIndex, chars[nextCharIndex], nextCharIndex + (nextCharIndex - 1));
+        for (int nextCharIndex = inputIndex - 1; nextCharIndex >= 0; nextCharIndex--)
+            PrintLine(inputIndex - nextCharIndex, AlphabetLetters[nextCharIndex], nextCharIndex + (nextCharIndex - 1));
 
         return Output;
     }
@@ -46,7 +46,7 @@ public class Diamond
     {
         diamondBuilder.Append($"{string.Empty.PadLeft(paddingLeft, PaddingUnitSpace)}{@char}");
 
-        if (@char != firstChar)
+        if (@char != FirstAlphabetLetter)
             diamondBuilder.Append($"{string.Empty.PadLeft(paddingRight, PaddingUnitSpace)}{@char}");
 
         diamondBuilder.Append('\n');
