@@ -1,12 +1,5 @@
 # DiamondKata
-Kata is based on a post by Seb Rose here: http://claysnow.co.uk/recycling-tests-in-tdd/
-
-## Pre-requirements
-
-In order to build and run the application the following are some pre-requirements:
-
-- [.Net 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) installed in the hosting machine in order to be able to build and run the application from your favourite IDE.
-- [Docker](https://docs.docker.com/get-docker/) installed in order to be able to run the application from container.
+DiamondKata is a console application built on top of [.Net 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) based on a post by Seb Rose here: http://claysnow.co.uk/recycling-tests-in-tdd/.
 
 ## Run the Diamond application
 There are 3 options to run the application:
